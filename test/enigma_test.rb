@@ -16,9 +16,9 @@ class EnigmaTest < Minitest::Test
     assert_equal "00123", @enigma.generate_key
   end
 
-  def test_it_can_split_into_key_subset_integers
+  def test_it_can_split_into_key_subset_of_integers
     @enigma.stubs(:rand).returns(123)
 
-    assert_equal [0, 1, 12, 23], @keys.split_key
+    assert_equal [0, 1, 12, 23], @enigma.split_key
   end
 end
