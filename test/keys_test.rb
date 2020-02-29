@@ -4,7 +4,8 @@ require './lib/keys'
 
 class KeysTest < Minitest::Test
   def setup
-    @keys = Keys.new
+    number_generator = NumberGenerator.new
+    @keys = Keys.new(number_generator)
   end
 
   def test_it_exists
