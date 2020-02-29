@@ -3,17 +3,16 @@ class Keys
 
   def initialize(number_generator)
     @number_generator = number_generator
-    @random_number = []
+    @random_number = nil
   end
 
   def save_number(number)
-    @random_number << number
+    @random_number = number
   end
 
   def pair_number_characters
     paired_elements = []
-    @random_number.flatten.each do |element|
-      require "pry"; binding.pry
+    @random_number.each do |element|
     end
     paired_elements
   end
