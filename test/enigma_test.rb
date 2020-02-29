@@ -14,7 +14,11 @@ class EnigmaTest < Minitest::Test
     @enigma.stubs(:rand).returns(123)
 
     assert_equal "00123", @enigma.generate_key
-    assert_equal String, @enigma.generate_key.class
-    assert_equal 5, @enigma.generate_key.length
+  end
+
+  def test_it_can_split_into_key_subset_integers
+    @enigma.stubs(:rand).returns(123)
+
+    assert_equal [0, 1, 12, 23], @keys.split_key
   end
 end
