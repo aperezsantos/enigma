@@ -5,4 +5,8 @@ class Keys
     @number_generator = number_generator
     @random_number = []
   end
+
+  def save_number(number)
+    @random_number << number
+  end
 end
