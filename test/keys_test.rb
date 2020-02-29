@@ -17,8 +17,16 @@ class KeysTest < Minitest::Test
     assert_equal NumberGenerator, @keys.number_generator.class
   end
 
-  def test_it_has_way_to_save_random_number
+  def test_it_has_way_to_save_generated_random_number
 
     assert_equal [], @keys.random_number
+  end
+
+  def test_it_can_save_generated_random_number
+    number =  @number_generator.generate_random_number
+
+    @keys.save_number(number)
+
+   assert_equal [number], @keys.random_number
   end
 end
