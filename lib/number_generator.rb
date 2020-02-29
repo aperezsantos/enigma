@@ -1,4 +1,5 @@
 class NumberGenerator
+  attr_reader :generate_random_number
   
   def generate_random_number
     rand(0..99999).to_s.rjust(5, '0')
