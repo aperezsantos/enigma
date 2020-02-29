@@ -1,0 +1,3 @@
+class NumberGenerator
+
+end
