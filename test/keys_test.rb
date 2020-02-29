@@ -12,6 +12,11 @@ class KeysTest < Minitest::Test
     assert_instance_of Keys, @keys
   end
 
+  def test_it_initializes_with_number_generator_object
+
+    assert_equal NumberGenerator, @keys.number_generator.class
+  end
+
   def test_it_has_way_to_save_random_number
 
     assert_equal [], @keys.random_number
