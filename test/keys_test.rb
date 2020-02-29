@@ -22,11 +22,11 @@ class KeysTest < Minitest::Test
     assert_equal [], @keys.random_number
   end
 
-  def test_it_can_save_generated_random_number
+  def test_it_can_save_generated_random_number_in_array_of_charcters
     number =  @number_generator.generate_random_number
 
-    @keys.save_number(number)
+    @keys.save_number(number.chars)
 
-   assert_equal [number], @keys.random_number
+   assert_equal [number.chars], @keys.random_number
   end
 end
