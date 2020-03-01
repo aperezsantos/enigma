@@ -18,4 +18,13 @@ class Enigma
       character.to_i
     end
   end
+
+  def generate_shifts
+    shifts = {}
+    shifts[:a] = split_key[0] + generate_offset(date)[0]
+    shifts[:b] = split_key[1] + generate_offset(date)[1]
+    shifts[:c] = split_key[2] + generate_offset(date)[2]
+    shifts[:d] = split_key[3] + generate_offset(date)[3]
+    shifts
+  end
 end
