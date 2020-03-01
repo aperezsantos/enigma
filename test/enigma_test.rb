@@ -3,11 +3,16 @@ require './lib/enigma'
 
 class EnigmaTest < Minitest::Test
   def setup
-    @enigma = Enigma.new
+    @letters = ('a'..'z').to_a.push(' ')
+    @enigma = Enigma.new(@letters)
   end
 
   def test_it_exists
     assert_instance_of Enigma, @enigma
+  end
+
+  def test_it_has_attributes
+    assert_equal @letters, @enigma.letters
   end
 
   def test_it_generates_key_as_a_string_integer
