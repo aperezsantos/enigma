@@ -27,4 +27,13 @@ class EnigmaTest < Minitest::Test
 
     assert_equal [8, 1, 0, 0], @enigma.generate_offset('080590')
   end
+
+  def test_it_can_generate_shifts
+    @enigma.stubs(:rand).returns(123)
+    @enigma.stubs(:date).returns('080590')
+
+    expected = {a: 8, b: 2, c: 12, d: 23}
+
+    assert_equal expected, @enigma.generate_shifts
+  end
 end
