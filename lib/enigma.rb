@@ -1,4 +1,10 @@
 class Enigma
+  attr_reader :letters
+
+  def initialize(letters)
+    @letters = letters
+  end
+
   def generate_key
     rand(0..99999).to_s.rjust(5, '0')
   end
