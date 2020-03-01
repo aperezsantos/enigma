@@ -11,4 +11,11 @@ class Enigma
     end
     key_subset
   end
+
+  def generate_offset(date)
+    last_four_digits = (date.to_i ** 2).to_s.slice(-4..-1)
+    last_four_digits.chars.map do |character|
+      character.to_i
+    end
+  end
 end
