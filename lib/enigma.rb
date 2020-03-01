@@ -13,9 +13,8 @@ class Enigma
   end
 
   def generate_offset(date)
-    squared = date.to_i ** 2
-    offset_subset = squared.to_s.slice(-4..-1).chars
-    offset_subset.map do |character|
+    last_four_digits = (date.to_i ** 2).to_s.slice(-4..-1)
+    last_four_digits.chars.map do |character|
       character.to_i
     end
   end
