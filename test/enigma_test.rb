@@ -43,13 +43,13 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_generate_shifts
-    skip
+    # skip
     @enigma.stubs(:rand).returns(123)
     @enigma.stubs(:date).returns('080590')
 
-    expected = {a: 8, b: 2, c: 12, d: 23}
+    expected = {:a=>3, :b=>27, :c=>73, :d=>20}
 
-    assert_equal expected, @enigma.generate_shifts
+    assert_equal expected, @enigma.generate_shifts("02715", "040895")
   end
 
   def test_enigma_encrypts_message_given_key_date
