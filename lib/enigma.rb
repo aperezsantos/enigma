@@ -1,8 +1,8 @@
 class Enigma
   attr_reader :letters
 
-  def initialize(letters)
-    @letters = letters
+  def initialize
+    @letters = ('a'..'z').to_a.push(' ')
   end
 
   def generate_key

@@ -3,8 +3,7 @@ require './lib/enigma'
 
 class EnigmaTest < Minitest::Test
   def setup
-    @letters = ('a'..'z').to_a.push(' ')
-    @enigma = Enigma.new(@letters)
+    @enigma = Enigma.new
   end
 
   def test_it_exists
@@ -12,7 +11,14 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_has_attributes
-    assert_equal @letters, @enigma.letters
+    expected = ["a", "b", "c", "d", "e",
+                "f", "g", "h", "i", "j",
+                "k", "l", "m", "n", "o",
+                "p", "q", "r", "s", "t",
+                "u", "v", "w", "x", "y",
+                "z", " "]
+                
+    assert_equal expected, @enigma.letters
   end
 
   def test_it_generates_key_as_a_string_integer
