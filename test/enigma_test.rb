@@ -29,8 +29,9 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_split_into_key_subset_of_integers
     @enigma.stubs(:rand).returns(123)
+    # @enigma.stubs(:rand).returns(123)
 
-    assert_equal [0, 1, 12, 23], @enigma.split_key
+    assert_equal [2, 27, 71, 15], @enigma.split_key('02715')
   end
 
   def test_it_can_generate_offset_with_given_date
