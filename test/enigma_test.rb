@@ -17,7 +17,7 @@ class EnigmaTest < Minitest::Test
                 "p", "q", "r", "s", "t",
                 "u", "v", "w", "x", "y",
                 "z", " "]
-                
+
     assert_equal expected, @enigma.letters
   end
 
@@ -46,5 +46,15 @@ class EnigmaTest < Minitest::Test
     expected = {a: 8, b: 2, c: 12, d: 23}
 
     assert_equal expected, @enigma.generate_shifts
+  end
+
+  def test_enigma_encrypts_message_given_key_date
+    expected = {
+                encryption: "keder ohulw",
+                key: "02715",
+                date: "040895"
+              }
+
+    assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
   end
 end
