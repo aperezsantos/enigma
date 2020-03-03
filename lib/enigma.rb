@@ -21,7 +21,6 @@ class Enigma
     key
   end
 
-
   def generate_offset(date)
     last_four_digits = (date.to_i ** 2).to_s.slice(-4..-1)
     last_four_digits.chars.map do |character|
@@ -64,7 +63,6 @@ class Enigma
     message.chars.each do |letter|
       transformed << encrypt_letter(letter, shifts.first)
       shifts = shifts.rotate
-      # shifts.rotate!
     end
     transformed.join
   end
@@ -75,7 +73,6 @@ class Enigma
     ciphertext.chars.each do |letter|
       decrypted << decrypt_letter(letter, shifts.first)
       shifts = shifts.rotate
-      # shifts.rotate!
     end
     decrypted.join
   end
@@ -86,11 +83,6 @@ class Enigma
     info[:key] = key
     info[:date] = date
     info
-      # {
-      # encryption: encrypt_message(message, key, date),
-      # key: key,
-      # date: date
-      # }
   end
 
   def decrypt(ciphertext, key, date = generate_date)
