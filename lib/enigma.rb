@@ -9,6 +9,10 @@ class Enigma
     rand(0..99999).to_s.rjust(5, '0')
   end
 
+  def generate_date
+    Time.new.strftime("%d%m%y")
+  end
+
   def split_key(number)
     key = []
     number.chars.each_cons(2) do |character|
@@ -76,7 +80,7 @@ class Enigma
     decrypted.join
   end
 
-  def encrypt(message, key, date)
+  def encrypt(message, key = generate_key, date = generate_date)
     info = Hash.new
     info[:encryption] = encrypt_message(message, key, date)
     info[:key] = key
@@ -89,7 +93,7 @@ class Enigma
       # }
   end
 
-  def decrypt(ciphertext, key, date)
+  def decrypt(ciphertext, key, date = generate_date)
     info = Hash.new
     info[:decryption] = decrypt_ciphertext(ciphertext, key, date)
     info[:key] = key
@@ -97,7 +101,3 @@ class Enigma
     info
   end
 end
-
-
-# take an encrypted message, decrypt
-# for each letter take the index and subtract the shift value
