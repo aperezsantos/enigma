@@ -67,6 +67,8 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_decrypt_ciphertext_to_related_encryption
     assert_equal "f", @enigma.decrypt_letter("h", 2)
+    assert_equal "!", @enigma.decrypt_letter("!", 15)
+
   end
 
   def test_enigma_encrypts_message_given_key_date
@@ -90,4 +92,42 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
+
+  def test_enigma_encrypts_message_given_only_message_and_key
+    @enigma.stubs(:generate_date).returns("040895")
+
+    expected = {
+                encryption: "keder ohulw",
+                key: "02715",
+                date: "040895"
+              }
+
+    assert_equal expected, @enigma.encrypt("hello world", "02715")
+  end
+
+  def test_enigma_decrypts_ciphertext_given_only_message_and_key
+    @enigma.stubs(:generate_date).returns("040895")
+
+    expected = {
+                decryption: "hello world",
+                key: "02715",
+                date: "040895"
+              }
+
+    assert_equal expected, @enigma.decrypt("keder ohulw", "02715")
+  end
+
+  def test_enigma_encrypts_message_given_only_message
+    @enigma.stubs(:generate_date).returns("040895")
+    @enigma.stubs(:generate_key).returns("02715")
+
+    expected = {
+                encryption: "keder ohulw",
+                key: "02715",
+                date: "040895"
+              }
+
+    assert_equal expected, @enigma.encrypt("hello world")
+  end
+
 end
