@@ -21,5 +21,3 @@ different components, however, I ran out of time. My test coverage is high.
 I have a few commits that with multiple functionality as I started to run out of time.
 Because of this, I give myself a two. With more time, I would commit every time a test
 is passed, so as to keep things separately.
-
-Also, it's 3:57 am, on the day it's due. I am tired! XC
