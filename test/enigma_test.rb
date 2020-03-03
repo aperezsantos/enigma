@@ -47,7 +47,11 @@ class EnigmaTest < Minitest::Test
     # @enigma.stubs(:rand).returns(123)
     # @enigma.stubs(:date).returns('080590')
 
-    assert_equal [3, 7, 73, 20], @enigma.generate_shifts("02715", "040895")
+    assert_equal [3, 27, 73, 20], @enigma.generate_shifts("02715", "040895")
+  end
+
+  def test_it_can_transform_message
+    assert_equal "keder ohulw", @enigma.transform_message("hello world", "02715", "040895")
   end
 
   def test_it_can_transform_letter_to_related_encryption
@@ -57,6 +61,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_enigma_encrypts_message_given_key_date
+    skip
     expected = {
                 encryption: "keder ohulw",
                 key: "02715",
