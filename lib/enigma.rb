@@ -44,13 +44,27 @@ class Enigma
     end
   end
 
-  def encrypt(message, key, date)
-    # split the letters in message individually, including space
-    # for each of my letters in my message, transform the letter
-    message.chars.map do |letter|
-      transform_letter(letter, shifte_value)
+  def transform_message(message, key, date)
+    transformed = []
+    shifts = generate_shifts(key, date)
+    message.chars.each do |letter|
+      transformed << transform_letter(letter, shifts.first)
+      shifts = shifts.rotate
+      # shifts.rotate!
     end
-    # split_key(key)
-    # generate_offset(date)
+    transformed.join
   end
-end
+
+  def encrypt(message, key, date)
+    # transformed = []
+    # shifts = generate_shifts(key, date)
+    # message.chars.each do |letter|
+    #   transformed << transform_letter(letter, shifts.first)
+    #   shifts = shifts.rotate
+    #   # shifts.rotate!
+    # end
+    # require "pry"; binding.pry
+    encryption = transformed.join
+    info = {encryption: encryption, key: key, date: date}
+    end
+  end
