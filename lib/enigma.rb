@@ -34,7 +34,7 @@ class Enigma
     shifts
   end
 
-  def transform_letter(letter, shift_value)
+  def encrypt_letter(letter, shift_value)
     if @letters.include?(letter)
       index = @letters.index(letter)
       new_shift = index + shift_value
@@ -44,27 +44,60 @@ class Enigma
     end
   end
 
-  def transform_message(message, key, date)
+  def decrypt_letter(letter, shift_value)
+    if @letters.include?(letter)
+      index = @letters.index(letter)
+      new_shift = index - shift_value
+      @letters.rotate(new_shift).first
+    else
+      letter
+    end
+  end
+
+  def encrypt_message(message, key, date)
     transformed = []
     shifts = generate_shifts(key, date)
     message.chars.each do |letter|
-      transformed << transform_letter(letter, shifts.first)
+      transformed << encrypt_letter(letter, shifts.first)
       shifts = shifts.rotate
       # shifts.rotate!
     end
     transformed.join
   end
 
+  def decrypt_ciphertext(ciphertext, key, date)
+    decrypted = []
+    shifts = generate_shifts(key, date)
+    ciphertext.chars.each do |letter|
+      decrypted << decrypt_letter(letter, shifts.first)
+      shifts = shifts.rotate
+      # shifts.rotate!
+    end
+    decrypted.join
+  end
+
   def encrypt(message, key, date)
     info = Hash.new
-    info[:encryption] = transform_message(message, key, date)
+    info[:encryption] = encrypt_message(message, key, date)
     info[:key] = key
     info[:date] = date
     info
       # {
-      # encryption: transform_message(message, key, date),
+      # encryption: encrypt_message(message, key, date),
       # key: key,
       # date: date
       # }
   end
+
+  def decrypt(ciphertext, key, date)
+    info = Hash.new
+    info[:decryption] = decrypt_ciphertext(ciphertext, key, date)
+    info[:key] = key
+    info[:date] = date
+    info
+  end
 end
+
+
+# take an encrypted message, decrypt
+# for each letter take the index and subtract the shift value
