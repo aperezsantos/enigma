@@ -43,7 +43,7 @@ class Enigma
       new_shift = index + shift_value
       @letters.rotate(new_shift).first
     else
-      letter
+      letter.downcase
     end
   end
 
@@ -53,7 +53,7 @@ class Enigma
       new_shift = index - shift_value
       @letters.rotate(new_shift).first
     else
-      letter
+      letter.downcase
     end
   end
 
