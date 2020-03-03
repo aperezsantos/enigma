@@ -50,14 +50,23 @@ class EnigmaTest < Minitest::Test
     assert_equal [3, 27, 73, 20], @enigma.generate_shifts("02715", "040895")
   end
 
-  def test_it_can_transform_message
-    assert_equal "keder ohulw", @enigma.transform_message("hello world", "02715", "040895")
+  def test_it_can_encrypt_message
+    # skip
+    assert_equal "keder ohulw", @enigma.encrypt_message("hello world", "02715", "040895")
   end
 
-  def test_it_can_transform_letter_to_related_encryption
+  def test_it_can_decrypt_ciphertext
+    # skip
+    assert_equal "hello world", @enigma.decrypt_ciphertext("keder ohulw", "02715", "040895")
+  end
 
-    assert_equal "i", @enigma.transform_letter("h", 28)
-    assert_equal "!", @enigma.transform_letter("!", 15)
+  def test_it_can_encrypt_letter_to_related_encryption
+    assert_equal "j", @enigma.encrypt_letter("h", 2)
+    assert_equal "!", @enigma.encrypt_letter("!", 15)
+  end
+
+  def test_it_can_decrypt_ciphertext_to_related_encryption
+    assert_equal "f", @enigma.decrypt_letter("h", 2)
   end
 
   def test_enigma_encrypts_message_given_key_date
@@ -69,5 +78,16 @@ class EnigmaTest < Minitest::Test
               }
 
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
+  end
+
+  def test_it_decrypts_message_given_key_date
+    # skip
+    expected = {
+                decryption: "hello world",
+                key: "02715",
+                date: "040895"
+              }
+
+    assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
 end
