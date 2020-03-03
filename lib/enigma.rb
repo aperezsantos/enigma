@@ -56,15 +56,15 @@ class Enigma
   end
 
   def encrypt(message, key, date)
-    # transformed = []
-    # shifts = generate_shifts(key, date)
-    # message.chars.each do |letter|
-    #   transformed << transform_letter(letter, shifts.first)
-    #   shifts = shifts.rotate
-    #   # shifts.rotate!
-    # end
-    # require "pry"; binding.pry
-    encryption = transformed.join
-    info = {encryption: encryption, key: key, date: date}
-    end
+    info = Hash.new
+    info[:encryption] = transform_message(message, key, date)
+    info[:key] = key
+    info[:date] = date
+    info
+      # {
+      # encryption: transform_message(message, key, date),
+      # key: key,
+      # date: date
+      # }
   end
+end

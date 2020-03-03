@@ -61,7 +61,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_enigma_encrypts_message_given_key_date
-    skip
+    # skip
     expected = {
                 encryption: "keder ohulw",
                 key: "02715",
@@ -70,6 +70,4 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
   end
-
-
 end
