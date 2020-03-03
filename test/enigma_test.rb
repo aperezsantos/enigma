@@ -28,7 +28,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_split_into_key_subset_of_integers
-    @enigma.stubs(:rand).returns(123)
+    # @enigma.stubs(:rand).returns(123)
     # @enigma.stubs(:rand).returns(123)
 
     assert_equal [2, 27, 71, 15], @enigma.split_key('02715')
@@ -44,18 +44,24 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_generate_shifts
     # skip
-    @enigma.stubs(:rand).returns(123)
-    @enigma.stubs(:date).returns('080590')
+    # @enigma.stubs(:rand).returns(123)
+    # @enigma.stubs(:date).returns('080590')
 
     expected = {:a=>3, :b=>27, :c=>73, :d=>20}
 
     assert_equal expected, @enigma.generate_shifts("02715", "040895")
   end
 
+  def test_it_can_transform_letter_to_related_encryption
+
+    assert_equal "i", @enigma.transform_letter("h", 28)
+    assert_equal "!", @enigma.transform_letter("!", 15)
+  end
+
   def test_enigma_encrypts_message_given_key_date
     skip
     expected = {
-                encryption: "keder ohulw",
+                encryption: "k",
                 key: "02715",
                 date: "040895"
               }
