@@ -34,10 +34,18 @@ class Enigma
     shifts
   end
 
+  def transform_letter(letter, shift_value)
+    if @letters.include?(letter)
+      index = @letters.index(letter)
+      new_shift = index + shift_value
+      @letters.rotate(new_shift).first
+    else
+      letter
+    end
+  end
 
   def encrypt(message, key, date)
-   split_key
-   generate_offset
-   require "pry"; binding.pry
- end
+    # split_key(key)
+    # generate_offset(date)
+  end
 end
