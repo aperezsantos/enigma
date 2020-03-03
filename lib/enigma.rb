@@ -26,11 +26,11 @@ class Enigma
   end
 
   def generate_shifts(key, date)
-    shifts = {}
-    shifts[:a] = split_key(key)[0] + generate_offset(date)[0]
-    shifts[:b] = split_key(key)[1] + generate_offset(date)[1]
-    shifts[:c] = split_key(key)[2] + generate_offset(date)[2]
-    shifts[:d] = split_key(key)[3] + generate_offset(date)[3]
+    shifts = []
+    shifts << split_key(key)[0] + generate_offset(date)[0]
+    shifts << split_key(key)[1] + generate_offset(date)[1]
+    shifts << split_key(key)[2] + generate_offset(date)[2]
+    shifts << split_key(key)[3] + generate_offset(date)[3]
     shifts
   end
 
@@ -45,6 +45,11 @@ class Enigma
   end
 
   def encrypt(message, key, date)
+    # split the letters in message individually, including space
+    # for each of my letters in my message, transform the letter
+    message.chars.map do |letter|
+      transform_letter(letter, shifte_value)
+    end
     # split_key(key)
     # generate_offset(date)
   end
